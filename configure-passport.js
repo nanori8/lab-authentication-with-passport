@@ -46,6 +46,7 @@ passport.use(
       // const email = profile.emails.length ? profile.emails[0].value : null;
       const photo = profile._json.avatar_url;
       const githubId = profile.id;
+      console.log(profile);
 
       User.findOne({
         githubId

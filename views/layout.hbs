@@ -11,7 +11,7 @@
       {{#if user}}
         {{!-- <a href="/authentication/private">{{user.username}}'s Profile</a> --}}
         <form action="/authentication/sign-out" method="POST">
-        <a href="/authentication/private"><img src="{{ user.photo }}" class="profile-picture">{{  user.username }}'s Profile</a>
+        <a href="/authentication/private"><img src="{{ user.photo }}" class="profile-picture">{{  user.name }}'s Profile</a>
           <button>Sign Out</button>
         </form>
         {{else}}
