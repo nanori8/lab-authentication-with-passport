@@ -7,7 +7,24 @@ const routeGuard = require('./../middleware/route-guard');
 
 const passport = require('passport');
 
-// 5 - We need to tell our route handlers to use their corresponding strategies.
+
+// new Github router
+authenticationRouter.get(
+  '/github',
+  passport.authenticate('github', {
+    successRedirect: '/',
+    failureRedirect: '/error'
+  })
+);
+
+authenticationRouter.get(
+  '/github-callback',
+  passport.authenticate('github', {
+    successRedirect: '/',
+    failureRedirect: '/error'
+  })
+);
+
 
 // Sign-up
 authenticationRouter.get('/sign-up', (req, res, next) => {

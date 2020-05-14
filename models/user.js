@@ -2,16 +2,22 @@
 
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema(
-  {
-    username: {
-      type: String,
-      required: true
-    },
-    passwordHash: {
-      type: String,
-      required: true
-    }
+const userSchema = new mongoose.Schema({
+  name: {
+    type: String
+  },
+  photo: {
+    type: String
+  },
+  githubId: {
+    type: String
+  },
+  username: {
+     type: String
+   },
+  passwordHash: {
+    type: String
+  }
   },
   {
     timestamps: true
