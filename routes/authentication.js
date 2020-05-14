@@ -3,6 +3,8 @@
 const { Router } = require('express');
 const authenticationRouter = Router();
 
+const routeGuard = require('./../middleware/route-guard');
+
 const passport = require('passport');
 
 // 5 - We need to tell our route handlers to use their corresponding strategies.
@@ -34,16 +36,19 @@ authenticationRouter.post(
 );
 
 // view one
-authenticationRouter.get('/private/:placeId', (req, res, next) =>{
-    const usereId = user._id
-    .findById(usereId)
-    .then(user => {
-        res.render('authentication/private', {user});
-    });
-});
+// authenticationRouter.get('/private/:usereId', (req, res, next) =>{
+//     const usereId = req.body.id
+//     .findById(usereId)
+//     .then(user => {
+//         res.render('authentication/private', {user});
+//     });
+// });
+
+authenticationRouter.get('/private', routeGuard, (req, res, next) => {  
+  res.render('authentication/private');});
 
 //Sign-out
-authenticationRouter.post('/sign-out', (req, res, next) => {
+authenticationRouter.post('/sign-out', routeGuard, (req, res, next) => {
   req.logout();
   res.redirect('/');
 });
